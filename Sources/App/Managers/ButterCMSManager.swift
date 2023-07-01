@@ -6,13 +6,13 @@
 //
 
 import ButterCMSSDK
-// import Combine
+import Combine
 
 class ButterCMSManager {
     static var shared = ButterCMSManager()
     let butter = ButterCMSClient(apiKey: "643774ad451526d62c9ca0f9cdacdeaff558a6ee")
 //    let homePageSubject = PassthroughSubject<PageResponse<HomePageFields>, Error>()
-//    let caseStudyPagesSubject = PassthroughSubject<PagesResponse<CaseStudyPageFields>, Error>()
+    let blogPagesSubject = PassthroughSubject<PagesResponse<BlogPageFields>, Error>()
 //    let caseStudyPageSubject = PassthroughSubject<PageResponse<CaseStudyPageFields>, Error>()
 //    let faqCollectionSubject = PassthroughSubject<CollectionResponse<FaqCollectionItem>, Error>()
 //    let blogSubject = PassthroughSubject<PostsResponse, Error>()
@@ -53,18 +53,20 @@ class ButterCMSManager {
 //        }
 //    }
 //
-//    func getPages() {
-//        butter.getPages(pageTypeSlug: "blog", type: BlogPageFields.self) { result in
-//            switch result {
-//            case let .success(pages):
+    func getPages() {
+        butter.getPages(pageTypeSlug: "blog", type: BlogPageFields.self) { result in
+            switch result {
+            case let .success(pages):
 //                 print("pages\(pages)")
-//             //    self.caseStudyPagesSubject.send(pages)
-//            case let .failure(error):
-//             //    self.caseStudyPagesSubject.send(completion: .failure(error))
+                 self.blogPagesSubject.send(pages)
+                
+                return pages
+            case let .failure(error):
+                 self.blogPagesSubject.send(completion: .failure(error))
 //                 print(error)
-//            }
-//        }
-//    }
+            }
+        }
+    }
 //
    func getPage(slug: String) {
        butter.getPage(slug: slug, parameters: [.locale(value: "en")], pageTypeSlug: "blog", type: BlogPageFields.self) { result in

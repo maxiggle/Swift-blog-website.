@@ -9,7 +9,9 @@ struct WebsiteController: RouteCollection {
   }
 
   func handleArticleList(_ req: Request) -> EventLoopFuture<View> {
-    ButterCMSManager.shared.getPage(slug: "how-to-use-axios-in-your-vue-app")
+    ButterCMSManager.shared.getPages()
+      let values = ButterCMSManager.shared.blogPagesSubject;
+      values.values;
 
     var articles = [ArticleList]()
     // Populate the articles array with some data
@@ -34,6 +36,7 @@ struct WebsiteController: RouteCollection {
     }
     let context: [String: [[String: String]]] = [
       "articles": articleDictionaries,
+      
     ]
     return req.view.render("index", context)
   }
