@@ -21,9 +21,9 @@
     {
       "identity" : "buttercms-swift",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/ButterCMS/buttercms-swift.git",
+      "location" : "https://github.com/Prn-Ice/buttercms-swift.git",
       "state" : {
-        "revision" : "80c622b8d94a2051030a637685337c96b09e19bb",
+        "revision" : "645dfed7fffdd3b075057d909d625fdda37db290",
         "version" : "1.0.9"
       }
     },
