@@ -10,7 +10,7 @@ let package = Package(
         // 💧 A server-side Swift web framework.
         .package(url: "https://github.com/vapor/vapor.git", from: "4.76.0"),
         .package(url: "https://github.com/vapor/leaf.git", from: "4.0.0"),
-        .package(url: "https://github.com/Prn-Ice/buttercms-swift.git", from: "1.1.2"),
+        .package(url: "https://github.com/Prn-Ice/buttercms-swift.git", from: "1.1.3"),
     ],
     targets: [
         .executableTarget(
