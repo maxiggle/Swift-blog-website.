@@ -9,7 +9,7 @@ struct WebsiteController: RouteCollection {
   }
 
   func handleArticleList(_ req: Request) -> EventLoopFuture<View> {
-    ButterCMSManager.shared.getPages()
+    ButterCMSManager.shared.getPage(slug: "how-to-use-axios-in-your-vue-app")
 
     var articles = [ArticleList]()
     // Populate the articles array with some data

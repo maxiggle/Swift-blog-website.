@@ -53,29 +53,31 @@ class ButterCMSManager {
 //        }
 //    }
 //
-   func getPages() {
-       butter.getPages(pageTypeSlug: "blog", type: BlogPageFields.self) { result in
-           switch result {
-           case let .success(pages):
-                print("pages\(pages)")
-            //    self.caseStudyPagesSubject.send(pages)
-           case let .failure(error):
-            //    self.caseStudyPagesSubject.send(completion: .failure(error))
-                print(error)
-           }
-       }
-   }
-//
-//    func getPage(slug: String) {
-//        butter.getPage(slug: slug, parameters: [.locale(value: "en")], pageTypeSlug: "case_studies", type: CaseStudyPageFields.self) { result in
+//    func getPages() {
+//        butter.getPages(pageTypeSlug: "blog", type: BlogPageFields.self) { result in
 //            switch result {
-//            case let .success(page):
-//                self.caseStudyPageSubject.send(page)
+//            case let .success(pages):
+//                 print("pages\(pages)")
+//             //    self.caseStudyPagesSubject.send(pages)
 //            case let .failure(error):
-//                self.caseStudyPageSubject.send(completion: .failure(error))
+//             //    self.caseStudyPagesSubject.send(completion: .failure(error))
+//                 print(error)
 //            }
 //        }
 //    }
+//
+   func getPage(slug: String) {
+       butter.getPage(slug: slug, parameters: [.locale(value: "en")], pageTypeSlug: "blog", type: BlogPageFields.self) { result in
+           switch result {
+           case let .success(page):
+            print("pages\(page)")
+            //    self.caseStudyPageSubject.send(page)
+           case let .failure(error):
+           print(error)
+            //    self.caseStudyPageSubject.send(completion: .failure(error))
+           }
+       }
+   }
 //
 //    func getCollection() {
 //        butter.getCollection(slug: "faq", parameters: [.locale(value: "en")], type: FaqCollectionItem.self) { result in
