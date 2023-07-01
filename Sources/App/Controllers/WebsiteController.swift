@@ -12,6 +12,8 @@ struct WebsiteController: RouteCollection {
 
   
     func handleArticleList(_ req: Request) -> EventLoopFuture<View> {
+        ButterCMSManager.shared.getPosts()
+        
         var articles = [ArticleList]()
         // Populate the articles array with some data
         let article1 = ArticleList(articleName: "Article 1", articleImage: "image1.jpg", articleDescription: "Description of Article 1")
@@ -25,6 +27,7 @@ struct WebsiteController: RouteCollection {
 //
         print("value: \(articles.count)")
         // Convert the array of ArticleList objects into an array of dictionaries
+        
         let articleDictionaries = articles.map { article in
             return [
                 "articleName": article.articleName,
@@ -33,16 +36,9 @@ struct WebsiteController: RouteCollection {
                 
             ]
         }
-        
-        
-//        print(articleDictionaries)
-        
         let context: [String: [[String:String]]] = [
             "articles": articleDictionaries,
-//            "value": articles.count
         ]
-
-
          return req.view.render("index", context )
     }
 
