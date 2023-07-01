@@ -1,11 +1,7 @@
 import Vapor
 
 func routes(_ app: Application) throws {
-    app.get { req async in
-        "It works!"
-    }
+    let websiteController = WebsiteController()
+    try app.register(collection: websiteController)
 
-    app.get("hello") { req async -> String in
-        "Hello, world!"
-    }
 }
