@@ -1,0 +1,28 @@
+{
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "name": "Debug App",
+            "program": "${workspaceFolder:swift-blog}/.build/debug/App",
+            "args": [],
+            "cwd": "${workspaceFolder:swift-blog}",
+            "preLaunchTask": "swift: Build Debug App"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "name": "Release App",
+            "program": "${workspaceFolder:swift-blog}/.build/release/App",
+            "args": [],
+            "cwd": "${workspaceFolder:swift-blog}",
+            "preLaunchTask": "swift: Build Release App"
+        }
+    ]
+}
