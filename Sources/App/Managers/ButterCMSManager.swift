@@ -54,7 +54,7 @@ class ButterCMSManager {
 //    }
 //
    func getPages() {
-       butter.getPages(parameters: [.locale(value: "en")], pageTypeSlug: "case_studies", type: CaseStudyPageFields.self) { result in
+       butter.getPages(pageTypeSlug: "blog", type: BlogPageFields.self) { result in
            switch result {
            case let .success(pages):
                 print("pages\(pages)")
