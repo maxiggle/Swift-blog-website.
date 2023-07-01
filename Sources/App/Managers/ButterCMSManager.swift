@@ -34,10 +34,10 @@ class ButterCMSManager {
 //             switch result {
 //             case let .success(posts):
 //                 print("posts\(posts)")
-// //                self.blogSubject.send(posts)
+    // //                self.blogSubject.send(posts)
 //             case let .failure(error):
 //                 print(error)
-// //                self.blogSubject.send(completion: .failure(error))
+    // //                self.blogSubject.send(completion: .failure(error))
 //             }
 //         }
 //     }
@@ -58,28 +58,29 @@ class ButterCMSManager {
             switch result {
             case let .success(pages):
 //                 print("pages\(pages)")
-                 self.blogPagesSubject.send(pages)
-                
+                self.blogPagesSubject.send(pages)
+
                 return pages
             case let .failure(error):
-                 self.blogPagesSubject.send(completion: .failure(error))
+                self.blogPagesSubject.send(completion: .failure(error))
 //                 print(error)
             }
         }
     }
+
 //
-   func getPage(slug: String) {
-       butter.getPage(slug: slug, parameters: [.locale(value: "en")], pageTypeSlug: "blog", type: BlogPageFields.self) { result in
-           switch result {
-           case let .success(page):
-            print("pages\(page)")
+    func getPage(slug: String) {
+        butter.getPage(slug: slug, parameters: [.locale(value: "en")], pageTypeSlug: "blog", type: BlogPageFields.self) { result in
+            switch result {
+            case let .success(page):
+                print("pages\(page)")
             //    self.caseStudyPageSubject.send(page)
-           case let .failure(error):
-           print(error)
-            //    self.caseStudyPageSubject.send(completion: .failure(error))
-           }
-       }
-   }
+            case let .failure(error):
+                print(error)
+                //    self.caseStudyPageSubject.send(completion: .failure(error))
+            }
+        }
+    }
 //
 //    func getCollection() {
 //        butter.getCollection(slug: "faq", parameters: [.locale(value: "en")], type: FaqCollectionItem.self) { result in

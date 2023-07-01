@@ -10,34 +10,24 @@ struct WebsiteController: RouteCollection {
 
   func handleArticleList(_ req: Request) -> EventLoopFuture<View> {
     ButterCMSManager.shared.getPages()
-      let values = ButterCMSManager.shared.blogPagesSubject;
-      values.values;
 
-    var articles = [ArticleList]()
-    // Populate the articles array with some data
-    let article1 = ArticleList(articleName: "Article 1", articleImage: "image1.jpg", articleDescription: "Description of Article 1")
-    let article2 = ArticleList(articleName: "Article 2", articleImage: "image2.jpg", articleDescription: "Description of Article 2")
-    let article3 = ArticleList(articleName: "Article 3", articleImage: "image3.jpg", articleDescription: "Description of Article 3")
+    ButterCMSManager.shared.blogPagesSubject
+      .compactMap { value in
+        value.data.compactMap { page in
+          PageCellViewModel(page: page)
+        }
+      }
+      .sink(
+        receiveCompletion: { completion in
+          switch completion {
+          case .finished: break
+          case let .failure(error): self.errorMessage.send(ErrorString.getString(error: error))
+          }
+        },
+        receiveValue: { [weak self] value in self?.pages = value }
+      )
+      .store(in: &subscriptions)
 
-    articles.append(article1)
-    articles.append(article2)
-    articles.append(article3)
-
-//
-    print("value: \(articles.count)")
-    // Convert the array of ArticleList objects into an array of dictionaries
-
-    let articleDictionaries = articles.map { article in
-      [
-        "articleName": article.articleName,
-        "articleImage": article.articleImage,
-        "articleDescription": article.articleDescription,
-      ]
-    }
-    let context: [String: [[String: String]]] = [
-      "articles": articleDictionaries,
-      
-    ]
     return req.view.render("index", context)
   }
 
