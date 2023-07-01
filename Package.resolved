@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Prn-Ice/buttercms-swift.git",
       "state" : {
-        "revision" : "5ae2b4946e6f4bfcb4b677b219ca7f7926116262",
-        "version" : "1.1.2"
+        "revision" : "c3e57360f8140f8b1d040781f1c25b4229b9927d",
+        "version" : "1.1.3"
       }
     },
     {

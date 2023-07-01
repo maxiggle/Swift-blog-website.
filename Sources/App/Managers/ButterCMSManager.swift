@@ -6,7 +6,7 @@
 //
 
 import ButterCMSSDK
-import Combine
+// import Combine
 
 class ButterCMSManager {
     static var shared = ButterCMSManager()
@@ -29,18 +29,18 @@ class ButterCMSManager {
 //        }
 //    }
 
-    func getPosts() {
-        butter.getPosts(parameters: [.excludeBody]) { result in
-            switch result {
-            case let .success(posts):
-                print("posts\(posts)")
-//                self.blogSubject.send(posts)
-            case let .failure(error):
-                print(error)
-//                self.blogSubject.send(completion: .failure(error))
-            }
-        }
-    }
+//     func getPosts() {
+//         butter.getPosts(parameters: [.excludeBody]) { result in
+//             switch result {
+//             case let .success(posts):
+//                 print("posts\(posts)")
+// //                self.blogSubject.send(posts)
+//             case let .failure(error):
+//                 print(error)
+// //                self.blogSubject.send(completion: .failure(error))
+//             }
+//         }
+//     }
 
 //    func getPost(slug: String) {
 //        butter.getPost(slug: slug) { result in
@@ -53,16 +53,18 @@ class ButterCMSManager {
 //        }
 //    }
 //
-//    func getPages() {
-//        butter.getPages(parameters: [.locale(value: "en")], pageTypeSlug: "case_studies", type: CaseStudyPageFields.self) { result in
-//            switch result {
-//            case let .success(pages):
-//                self.caseStudyPagesSubject.send(pages)
-//            case let .failure(error):
-//                self.caseStudyPagesSubject.send(completion: .failure(error))
-//            }
-//        }
-//    }
+   func getPages() {
+       butter.getPages(parameters: [.locale(value: "en")], pageTypeSlug: "case_studies", type: CaseStudyPageFields.self) { result in
+           switch result {
+           case let .success(pages):
+                print("pages\(pages)")
+            //    self.caseStudyPagesSubject.send(pages)
+           case let .failure(error):
+            //    self.caseStudyPagesSubject.send(completion: .failure(error))
+                print(error)
+           }
+       }
+   }
 //
 //    func getPage(slug: String) {
 //        butter.getPage(slug: slug, parameters: [.locale(value: "en")], pageTypeSlug: "case_studies", type: CaseStudyPageFields.self) { result in
