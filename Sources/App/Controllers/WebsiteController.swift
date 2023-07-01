@@ -40,6 +40,17 @@ struct WebsiteController: RouteCollection {
     ]
     return req.view.render("index", context)
   }
+
+  func indexHandler(_ req: Request) -> EventLoopFuture<View> {
+    // 1
+    let context = IndexContext(title: "Home page")
+    // 2
+    return req.view.render("index", context)
+  }
+}
+
+struct IndexContext: Encodable {
+  let title: String
 }
 
 struct ArticleList: Encodable {
