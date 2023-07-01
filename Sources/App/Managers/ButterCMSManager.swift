@@ -57,13 +57,13 @@ class ButterCMSManager {
         butter.getPages(pageTypeSlug: "blog", type: BlogPageFields.self) { result in
             switch result {
             case let .success(pages):
-//                 print("pages\(pages)")
-                self.blogPagesSubject.send(pages)
-
-                return pages
+                 print("pages\(pages)")
+                 self.blogPagesSubject.send(pages)
+                
+//                return pages
             case let .failure(error):
-                self.blogPagesSubject.send(completion: .failure(error))
-//                 print(error)
+                 self.blogPagesSubject.send(completion: .failure(error))
+                 print(error)
             }
         }
     }
