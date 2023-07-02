@@ -98,6 +98,23 @@ class ButterCMSManager {
 
         return promise.futureResult
     }
+    
+    func getLandingPage(eventLoop: EventLoop) ->EventLoopFuture<[Page<LandingPageFields>]> {
+        let promise = eventLoop.makePromise(of: [Page<LandingPageFields>].self)
+        butter.getPages(pageTypeSlug: "blog_landing_page", type: LandingPageFields.self) { result in
+            switch result {
+            case let .success(page):
+                print(page)
+                promise.succeed(page.data)
+
+
+            case let .failure(error):
+                promise.fail(error)
+                print(error)
+            }
+        }
+        return promise.futureResult
+    }
 
 //
     func getPage(slug: String) {

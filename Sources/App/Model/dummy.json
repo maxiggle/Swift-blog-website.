@@ -1,0 +1,72 @@
+{
+  "slug": "landing-page",
+  "name": "landing-page",
+  "published": "2023-06-30T15:11:34.663505Z",
+  "updated": "2023-07-01T12:24:26.630347Z",
+  "page_type": "blog_landing_page",
+  "fields": {
+    "hero_section": {
+      "heroimage": "https://cdn.buttercms.com/z48Q9nRy6i9j6EcvXOpw",
+      "headline": "The Blog\n\nWritings from our team\n\nThe latest industry news, interview, technologies and resources\n\n\n"
+    },
+    "recent_blogs": [
+      {
+        "slug": "how-to-build-blog-with-buttercms-and-swift",
+        "name": "How to build blog with buttercms and swift",
+        "published": "2023-06-30T15:09:28.907098Z",
+        "updated": "2023-06-30T15:09:28.907098Z",
+        "page_type": "blog",
+        "fields": {
+          "blog": {
+            "title": "How to build blog with buttercms and swift",
+            "content": "<p>Hello Eskimo, thanks for sharing me your contact with me on the forum.<br>I am still a rookie using Swift, so I couldn't really express myself properly.<br><br></p>\n<div>I am building a website&nbsp;with using&nbsp;<a data-saferedirecturl=\"https://www.google.com/url?q=https://docs.vapor.codes/leaf/overview/&amp;source=gmail&amp;ust=1688220455430000&amp;usg=AOvVaw0kTznoXOuXSoyjE3JgAH3B\" target=\"_blank\" href=\"https://docs.vapor.codes/leaf/overview/\" rel=\"noopener\">leaf</a>&nbsp;template and Swift and I wanted to display some cards using the length of the dictionary.&nbsp;</div>\n<div>So to do that, I created a struct like below:</div>\n<div></div>\n<div>\n<p><strong>struct</strong>&nbsp;ArticleList:&nbsp;Encodable&nbsp;{</p>\n<p>&nbsp; &nbsp;&nbsp;<strong>var</strong>&nbsp;articleName:&nbsp;String</p>\n<p>&nbsp; &nbsp;&nbsp;<strong>var</strong>&nbsp;articleImage:&nbsp;String</p>\n<p>&nbsp; &nbsp;&nbsp;<strong>var</strong>&nbsp;articleDescription:&nbsp;String</p>\n<p>}</p>\n<p></p>\n<p>I used an Encodable because the function ```req.view.render(\"index\", context )``` accepts&nbsp;an Encodable context.</p>\n<p>So I created an array of ArticleList object (the values would be used to populate the card).&nbsp;</p>\n<p>Furthermore, the ```req.view.render(\"index\", context )``` function can only accept a dictionary and so I had to convert my array of object using the map function like below:</p>\n<p></p>\n<p>&nbsp;&nbsp;<strong>var</strong>&nbsp;articles = [ArticleList]()</p>\n<p>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;// Populate the articles array with some data</p>\n<p>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<strong>let</strong>&nbsp;article1 =&nbsp;ArticleList(articleName:&nbsp;\"Article 1\",&nbsp;articleImage:&nbsp;\"image1.jpg\",&nbsp;articleDescription:&nbsp;\"Description of Article 1\")</p>\n<p>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<strong>let</strong>&nbsp;article2 =&nbsp;ArticleList(articleName:&nbsp;\"Article 2\",&nbsp;articleImage:&nbsp;\"image2.jpg\",&nbsp;articleDescription:&nbsp;\"Description of Article 2\")</p>\n<p>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<strong>let</strong>&nbsp;article3 =&nbsp;ArticleList(articleName:&nbsp;\"Article 3\",&nbsp;articleImage:&nbsp;\"image3.jpg\",&nbsp;articleDescription:&nbsp;\"Description of Article 3\")</p>\n<p></p>\n<p>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;articles.append(article1)</p>\n<p>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;articles.append(article2)</p>\n<p>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;articles.append(article3)</p>\n<p>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;</p>\n<p>//&nbsp;&nbsp;</p>\n<p>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;print(\"value:&nbsp;\\(articles.count)\")</p>\n<p>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;// Convert the array of ArticleList objects into an array of dictionaries</p>\n<p>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<strong>let</strong>&nbsp;articleDictionaries = articles.map&nbsp;{ article&nbsp;<strong>in</strong></p>\n<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<strong>return</strong>&nbsp;[</p>\n<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;\"articleName\": article.articleName,</p>\n<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;\"articleImage\": article.articleImage,</p>\n<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;\"articleDescription\": article.articleDescription</p>\n<p>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>\n<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;]</p>\n<p></p>\n<p>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;}</p>\n<p></p>\n<p></p>\n<p>So I passed the ```articleDictionaries``` to a new variable and passed it to the render function and I used the leaf tag to access the list like below:<br><br></p>\n<p>&nbsp; //HTML file</p>\n<p>#for(planet in articles):</p>\n<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<strong>&lt;li&gt;</strong></p>\n<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<strong>&lt;h2&gt;</strong>#(planet.articleName)<strong>&lt;/h2&gt;</strong></p>\n<p>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>\n<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<strong>&lt;/li&gt;</strong></p>\n<p></p>\n<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;#endfor</p>\n<p></p>\n<p></p>\n<p>The above code works and returns articleNames but I tried passing the count as another value to the dictionary, but it throws an error.&nbsp;</p>\n<p></p>\n<p>See the image below:</p>\n</div>",
+            "author_details": "Godwin Ekainu ",
+            "published_date": "2023-06-28T04:30:00",
+            "slug": "how_to_build_blog_with_buttercms_and_swift",
+            "featured_photo": "https://cdn.buttercms.com/W3m7TY08SBWAnbAtoTiX",
+            "featured_alt_text": "featured text",
+            "summary": "Something more than gold"
+          }
+        }
+      },
+      {
+        "slug": "how-to-use-axios-in-your-vue-app",
+        "name": "How to use Axios in your Vue app",
+        "published": "2023-07-01T07:58:08.583046Z",
+        "updated": "2023-07-01T07:58:08.583046Z",
+        "page_type": "blog",
+        "fields": {
+          "blog": {
+            "title": "How to use Axios in your Vue app",
+            "content": "<p><a rel=\"noreferrer noopener\" target=\"_blank\" href=\"https://github.com/axios/axios\">Axios</a>&nbsp;is a promise-based HTTP client library for both browsers and Node.js applications, which means it can be used in both frontend JavaScript applications and backend Node servers.</p>\n<p>In this article, we will look at how to use Axios in a simple&nbsp;<a rel=\"noreferrer noopener\" target=\"_blank\" href=\"https://vuejs.org/\">Vue.js</a>&nbsp;application. Vue is a simple frontend JavaScript framework, so the Axios use case here will be for the browser.</p>\n<p>We will cover:</p>\n<ul>\n<li><a href=\"https://blog.logrocket.com/how-use-axios-vue-js/#prerequisites-tutorial-axios-vue-js\">Prerequisites for this tutorial using Axios with Vue.js</a></li>\n<li><a href=\"https://blog.logrocket.com/how-use-axios-vue-js/#setting-up-vue-js-project\">Setting up our Vue.js project</a></li>\n<li><a href=\"https://blog.logrocket.com/how-use-axios-vue-js/#adding-axios-vue-js-app\">Adding Axios to our Vue.js app</a></li>\n<li><a href=\"https://blog.logrocket.com/how-use-axios-vue-js/#using-axios-simple-import-vue-js-component\">Using Axios with a simple import in your Vue.js component</a></li>\n<li><a href=\"https://blog.logrocket.com/how-use-axios-vue-js/#using-axios-vue-js-project-creating-plugin\">Using Axios in our Vue.js project by creating a plugin</a></li>\n</ul>\n<h2 id=\"prerequisites-tutorial-axios-vue-js\">Prerequisites for this tutorial using Axios with Vue.js</h2>\n<p>To follow along, you&rsquo;ll need to install the following:</p>\n<ul>\n<li><a rel=\"noreferrer noopener\" target=\"_blank\" href=\"https://nodejs.org/\">Node.js v14 or newer</a></li>\n<li>A&nbsp;<a rel=\"noreferrer noopener\" target=\"_blank\" href=\"https://blog.logrocket.com/javascript-package-managers-compared/\">JavaScript package manager</a></li>\n<li>An IDE or text editor of your choice, like Sublime Text or&nbsp;<a rel=\"noreferrer noopener\" target=\"_blank\" href=\"https://code.visualstudio.com/\">Visual Studio Code</a></li>\n</ul>\n<p>We&rsquo;ll use npm as our JavaScript package manager, which is included when you install Node.</p>\n<h2 id=\"setting-up-vue-js-project\">Setting up our Vue.js project</h2>\n<p>We will create our project using the Vue CLI, starting by running the following command:</p>\n<pre>$ npm init vue@latest\n</pre>\n<p>This command prompts us with options on how we would like to set up our project.</p>\n<p>I&rsquo;ve chosen to name the project&nbsp;<code>mice-away</code>&nbsp;because &mdash; you guessed it &mdash; we&rsquo;re building a fun cat-related app! We will also set it up to use TypeScript.</p>\n<p>Here&rsquo;s a&nbsp;<del datetime=\"2022-08-02T14:47:41+00:00\">vue</del>&nbsp;view (I couldn&rsquo;t help it 😅) of my project configuration; feel free to change yours as you prefer:</p>",
+            "author_details": "Godwin Alexander Ekainu",
+            "published_date": "2023-07-01T07:00:00",
+            "slug": "new",
+            "featured_photo": "",
+            "featured_alt_text": "featured",
+            "summary": "Axios is a promise-based HTTP client library for both browsers and Node.js applications, which means it can be used in both frontend JavaScript applications and backend Node servers."
+          }
+        }
+      }
+    ],
+    "featured_blogs": {
+      "slug": "how-to-build-blog-with-buttercms-and-swift",
+      "name": "How to build blog with buttercms and swift",
+      "published": "2023-06-30T15:09:28.907098Z",
+      "updated": "2023-06-30T15:09:28.907098Z",
+      "page_type": "blog",
+      "fields": {
+        "blog": {
+          "title": "How to build blog with buttercms and swift",
+          "content": "<p>Hello Eskimo, thanks for sharing me your contact with me on the forum.<br>I am still a rookie using Swift, so I couldn't really express myself properly.<br><br></p>\n<div>I am building a website&nbsp;with using&nbsp;<a data-saferedirecturl=\"https://www.google.com/url?q=https://docs.vapor.codes/leaf/overview/&amp;source=gmail&amp;ust=1688220455430000&amp;usg=AOvVaw0kTznoXOuXSoyjE3JgAH3B\" target=\"_blank\" href=\"https://docs.vapor.codes/leaf/overview/\" rel=\"noopener\">leaf</a>&nbsp;template and Swift and I wanted to display some cards using the length of the dictionary.&nbsp;</div>\n<div>So to do that, I created a struct like below:</div>\n<div></div>\n<div>\n<p><strong>struct</strong>&nbsp;ArticleList:&nbsp;Encodable&nbsp;{</p>\n<p>&nbsp; &nbsp;&nbsp;<strong>var</strong>&nbsp;articleName:&nbsp;String</p>\n<p>&nbsp; &nbsp;&nbsp;<strong>var</strong>&nbsp;articleImage:&nbsp;String</p>\n<p>&nbsp; &nbsp;&nbsp;<strong>var</strong>&nbsp;articleDescription:&nbsp;String</p>\n<p>}</p>\n<p></p>\n<p>I used an Encodable because the function ```req.view.render(\"index\", context )``` accepts&nbsp;an Encodable context.</p>\n<p>So I created an array of ArticleList object (the values would be used to populate the card).&nbsp;</p>\n<p>Furthermore, the ```req.view.render(\"index\", context )``` function can only accept a dictionary and so I had to convert my array of object using the map function like below:</p>\n<p></p>\n<p>&nbsp;&nbsp;<strong>var</strong>&nbsp;articles = [ArticleList]()</p>\n<p>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;// Populate the articles array with some data</p>\n<p>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<strong>let</strong>&nbsp;article1 =&nbsp;ArticleList(articleName:&nbsp;\"Article 1\",&nbsp;articleImage:&nbsp;\"image1.jpg\",&nbsp;articleDescription:&nbsp;\"Description of Article 1\")</p>\n<p>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<strong>let</strong>&nbsp;article2 =&nbsp;ArticleList(articleName:&nbsp;\"Article 2\",&nbsp;articleImage:&nbsp;\"image2.jpg\",&nbsp;articleDescription:&nbsp;\"Description of Article 2\")</p>\n<p>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<strong>let</strong>&nbsp;article3 =&nbsp;ArticleList(articleName:&nbsp;\"Article 3\",&nbsp;articleImage:&nbsp;\"image3.jpg\",&nbsp;articleDescription:&nbsp;\"Description of Article 3\")</p>\n<p></p>\n<p>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;articles.append(article1)</p>\n<p>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;articles.append(article2)</p>\n<p>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;articles.append(article3)</p>\n<p>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;</p>\n<p>//&nbsp;&nbsp;</p>\n<p>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;print(\"value:&nbsp;\\(articles.count)\")</p>\n<p>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;// Convert the array of ArticleList objects into an array of dictionaries</p>\n<p>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<strong>let</strong>&nbsp;articleDictionaries = articles.map&nbsp;{ article&nbsp;<strong>in</strong></p>\n<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<strong>return</strong>&nbsp;[</p>\n<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;\"articleName\": article.articleName,</p>\n<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;\"articleImage\": article.articleImage,</p>\n<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;\"articleDescription\": article.articleDescription</p>\n<p>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>\n<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;]</p>\n<p></p>\n<p>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;}</p>\n<p></p>\n<p></p>\n<p>So I passed the ```articleDictionaries``` to a new variable and passed it to the render function and I used the leaf tag to access the list like below:<br><br></p>\n<p>&nbsp; //HTML file</p>\n<p>#for(planet in articles):</p>\n<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<strong>&lt;li&gt;</strong></p>\n<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<strong>&lt;h2&gt;</strong>#(planet.articleName)<strong>&lt;/h2&gt;</strong></p>\n<p>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>\n<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<strong>&lt;/li&gt;</strong></p>\n<p></p>\n<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;#endfor</p>\n<p></p>\n<p></p>\n<p>The above code works and returns articleNames but I tried passing the count as another value to the dictionary, but it throws an error.&nbsp;</p>\n<p></p>\n<p>See the image below:</p>\n</div>",
+          "author_details": "Godwin Ekainu ",
+          "published_date": "2023-06-28T04:30:00",
+          "slug": "how_to_build_blog_with_buttercms_and_swift",
+          "featured_photo": "https://cdn.buttercms.com/W3m7TY08SBWAnbAtoTiX",
+          "featured_alt_text": "featured text",
+          "summary": "Something more than gold"
+        }
+      }
+    }
+  }
+}

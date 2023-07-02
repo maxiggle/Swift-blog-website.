@@ -7,3 +7,13 @@ public struct BlogPageFields: Codable {
     var featuredPhoto: String?
     var featuredAltText, summary: String?
 }
+
+ 
+public struct LandingPageFields: Codable {
+    var heroSection: HeroSection?
+}
+
+public struct HeroSection: Codable {
+    var heroimage: String?
+    var headline: String?
+}

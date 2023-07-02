@@ -11,12 +11,18 @@ struct WebsiteController: RouteCollection {
 
   func handleArticleList(_ req: Request) -> EventLoopFuture<View> {
     let pagesFuture = ButterCMSManager.shared.getPages(eventLoop: req.eventLoop)
-
+    let landingPageFuture = ButterCMSManager.shared.getLandingPage(eventLoop: req.eventLoop)
+      
     return pagesFuture
       .flatMap { pages in
-        print(pages)
-        let context = IndexContext(title: "Home page", pages: pages)
-        return req.view.render("index", context)
+          return landingPageFuture.flatMap { landingPages in
+              print(pages)
+              print("$$$$$$$$$$$")
+              print(landingPages)
+              let context = IndexContext(title: "Home page", pages: pages, landingPages: landingPages)
+              return req.view.render("index", context)
+          }
+        
       }
   }
 }
@@ -24,6 +30,7 @@ struct WebsiteController: RouteCollection {
 struct IndexContext: Encodable {
   let title: String
   let pages: [Page<BlogPageFields>]?
+  let landingPages: [Page<LandingPageFields>]?
 }
 
 struct ArticleList: Encodable {
