@@ -60,21 +60,21 @@ class ButterCMSManager {
 //            case let .success(pages):
 //                 print("pages\(pages)")
 //                 self.blogPagesSubject.send(pages)
-//                
+//
 //            case let .failure(error):
 //                 self.blogPagesSubject.send(completion: .failure(error))
 //                 print(error)
 //            }
 //        }
 //    }
-    
+
 //    func getPages() async throws -> PagesResponse<BlogPageFields> {
 //        return try await withCheckedThrowingContinuation { continuation in
 //            butter.getPages(pageTypeSlug: "blog", type: BlogPageFields.self) { result in
 //                switch result {
 //                case let .success(pages):
 //                    continuation.resume(returning: pages)
-//                    
+//
 //                case let .failure(error):
 //                    continuation.resume(throwing: error)
 //                }
@@ -82,21 +82,20 @@ class ButterCMSManager {
 //        }
 //    }
 
-    
     func getPages(eventLoop: EventLoop) -> EventLoopFuture<[Page<BlogPageFields>]> {
         let promise = eventLoop.makePromise(of: [Page<BlogPageFields>].self)
-        
+
         butter.getPages(pageTypeSlug: "blog", type: BlogPageFields.self) { result in
             switch result {
             case let .success(pages):
                 promise.succeed(pages.data)
-                
+
             case let .failure(error):
                 promise.fail(error)
                 print(error)
             }
         }
-        
+
         return promise.futureResult
     }
 

@@ -1,7 +1,7 @@
+import ButterCMSSDK
 import Foundation
 import Leaf
 import Vapor
-import ButterCMSSDK
 
 struct WebsiteController: RouteCollection {
   func boot(routes: RoutesBuilder) throws {
@@ -10,16 +10,15 @@ struct WebsiteController: RouteCollection {
   }
 
   func handleArticleList(_ req: Request) -> EventLoopFuture<View> {
-      let pagesFuture = ButterCMSManager.shared.getPages(eventLoop: req.eventLoop)
-      
-      return pagesFuture
-          .flatMap { pages in
-              print(pages)
-                            let context = IndexContext(title: "Home page", pages: pages)
-                            return req.view.render("index", context)
-          }
-        }
+    let pagesFuture = ButterCMSManager.shared.getPages(eventLoop: req.eventLoop)
 
+    return pagesFuture
+      .flatMap { pages in
+        print(pages)
+        let context = IndexContext(title: "Home page", pages: pages)
+        return req.view.render("index", context)
+      }
+  }
 }
 
 struct IndexContext: Encodable {
