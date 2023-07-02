@@ -104,7 +104,7 @@ class ButterCMSManager {
         butter.getPages(pageTypeSlug: "blog_landing_page", type: LandingPageFields.self) { result in
             switch result {
             case let .success(page):
-                print(page)
+//                print(page)
                 promise.succeed(page.data)
 
 

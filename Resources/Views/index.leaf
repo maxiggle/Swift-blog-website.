@@ -11,7 +11,6 @@
       <link fhref="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
   <title>acronyms</title>
 </head>
-
 <body>
     <div class="min-h-full">
       <nav class="bg-gray-50">
@@ -67,24 +66,27 @@
                 #endfor
             </div>
             </div>
-            #for(page in landingPages):
+          
+             
             <div class="py-14 ">
-               
-            <div class="h-screen  w-full h-[250px] bg-cover bg-center bg-no-repeat mb-8 md:h-[50vh]  rounded bg-[url(#(page.fields.heroSection.heroimage))] overflow-hidden shadow-lg">
+                #for(heroImage in landingPages):
+            <div class="h-screen  w-full h-[250px] bg-cover bg-center bg-no-repeat mb-8 md:h-[50vh]  rounded bg-[url(#(firstBlog.featuredPhoto))] overflow-hidden shadow-lg">
+                #endfor
               <div class="px-6 py-4 my-72">
-                <div class="font-bold text-xl mb-2 text-white">Olivia Rhye.20 Jan 2022</div>
+                <div class="font-bold text-xl mb-2 text-white">#(firstBlog.authorDetails) #(firstBlog.publishedDate)</div>
                 <p class="text-gray-700 text-2xl text-white">
-                  UX review presentations
+                #(firstBlog.title)
                 </p>
+                
                 <p class="text-gray-700 py-4 text-sm text-white">
-                  How do you create presentation that wows your colleaque
+                  #(firstBlog.summary)
                 </p>
                 <div>
                 <span class="inline-block border-2 border-solid rounded-full px-3 py- text-sm font-semibold text-gray-50 mr-2 mb-2">Design</span>
                 <span class="inline-block border-2 border-solid rounded-full px-3 py-1 text-sm font-semibold text-gray-50 mr-2 mb-2">Research</span>
                 <span class="inline-block border-2 border-solid rounded-full px-3 py-1 text-sm font-semibold text-gray-50 mr-2 mb-2">Presentation</span>
                 </div>
-                #endfor
+                
               </div>
             </div>
             <div class="flex max-w-xl flex-row items-start justify-between" >

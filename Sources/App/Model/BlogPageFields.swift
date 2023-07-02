@@ -9,11 +9,27 @@ public struct BlogPageFields: Codable {
 }
 
  
+
+
 public struct LandingPageFields: Codable {
-    var heroSection: HeroSection?
+    let heroSection: HeroSection?
+    let recentBlogs: [Page<NestedBlogFields>]?
+
 }
 
-public struct HeroSection: Codable {
-    var heroimage: String?
-    var headline: String?
+
+struct HeroSection: Codable {
+    let heroimage: String?
+    let headline: String?
 }
+
+//struct RecentBlog: Codable {
+//    let fields: Fields
+//
+//}
+//
+struct NestedBlogFields: Codable {
+    let blog: BlogPageFields?
+}
+
+

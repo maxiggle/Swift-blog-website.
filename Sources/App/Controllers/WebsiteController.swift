@@ -16,10 +16,13 @@ struct WebsiteController: RouteCollection {
     return pagesFuture
       .flatMap { pages in
           return landingPageFuture.flatMap { landingPages in
-              print(pages)
-              print("$$$$$$$$$$$")
-              print(landingPages)
-              let context = IndexContext(title: "Home page", pages: pages, landingPages: landingPages)
+//              print(pages)
+//              print("$$$$$$$$$$$")
+              let typedPages = landingPages as [Page<LandingPageFields>]?
+              let firstBlog = typedPages?.first?.fields.recentBlogs?.first?.fields.blog;
+              firstBlog?.featuredPhoto
+//              print(typedPages?.first?.fields.blog)
+              let context = IndexContext(title: "Home page", pages: pages, landingPages: landingPages, firstBlog: firstBlog)
               return req.view.render("index", context)
           }
         
@@ -31,10 +34,7 @@ struct IndexContext: Encodable {
   let title: String
   let pages: [Page<BlogPageFields>]?
   let landingPages: [Page<LandingPageFields>]?
+  let firstBlog: BlogPageFields?
 }
 
-struct ArticleList: Encodable {
-  var articleName: String
-  var articleImage: String
-  var articleDescription: String
-}
+
