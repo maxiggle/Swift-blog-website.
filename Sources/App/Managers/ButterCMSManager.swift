@@ -7,6 +7,7 @@
 
 import ButterCMSSDK
 import Combine
+import NIO
 
 class ButterCMSManager {
     static var shared = ButterCMSManager()
@@ -53,19 +54,50 @@ class ButterCMSManager {
 //        }
 //    }
 //
-    func getPages() {
+//    func getPages() {
+//        butter.getPages(pageTypeSlug: "blog", type: BlogPageFields.self) { result in
+//            switch result {
+//            case let .success(pages):
+//                 print("pages\(pages)")
+//                 self.blogPagesSubject.send(pages)
+//                
+//            case let .failure(error):
+//                 self.blogPagesSubject.send(completion: .failure(error))
+//                 print(error)
+//            }
+//        }
+//    }
+    
+//    func getPages() async throws -> PagesResponse<BlogPageFields> {
+//        return try await withCheckedThrowingContinuation { continuation in
+//            butter.getPages(pageTypeSlug: "blog", type: BlogPageFields.self) { result in
+//                switch result {
+//                case let .success(pages):
+//                    continuation.resume(returning: pages)
+//                    
+//                case let .failure(error):
+//                    continuation.resume(throwing: error)
+//                }
+//            }
+//        }
+//    }
+
+    
+    func getPages(eventLoop: EventLoop) -> EventLoopFuture<[Page<BlogPageFields>]> {
+        let promise = eventLoop.makePromise(of: [Page<BlogPageFields>].self)
+        
         butter.getPages(pageTypeSlug: "blog", type: BlogPageFields.self) { result in
             switch result {
             case let .success(pages):
-                 print("pages\(pages)")
-                 self.blogPagesSubject.send(pages)
+                promise.succeed(pages.data)
                 
-//                return pages
             case let .failure(error):
-                 self.blogPagesSubject.send(completion: .failure(error))
-                 print(error)
+                promise.fail(error)
+                print(error)
             }
         }
+        
+        return promise.futureResult
     }
 
 //

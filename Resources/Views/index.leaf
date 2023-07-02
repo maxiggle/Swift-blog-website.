@@ -13,6 +13,30 @@
 </head>
 
 <body>
+    #if(pages):
+        <!-- 3 -->
+        <table>
+          <thead>
+            <tr>
+              <th>Short</th>
+              <th>Long</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- 4 -->
+            #for(page in pages):
+              <tr>
+                <!-- 5 -->
+                <td><a href="/acronyms/#(acronym.id)">#(page.name)</a></td>
+                <td>#(page.name)</td>
+              </tr>
+            #endfor
+          </tbody>
+        </table>
+      <!-- 6 -->
+      #else:
+        <h2>There aren’t any pages yet!</h2>
+      #endif
     <div class="min-h-full">
       <nav class="bg-gray-50">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
