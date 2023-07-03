@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -26,7 +25,7 @@
                   <a href="#" class="text-grey-800 rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Home</a>
                   <a href="#" class="text-grey-800 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Products</a>
                   <a href="#" class="text-grey-800 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Resources</a>
-                  <a href="#" class="text-grey-800 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Blog</a>
+                  <a  href="/blogs" class="text-grey-800 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Blog</a>
                 </div>
               </div>
             </div>
@@ -66,19 +65,15 @@
                 #endfor
             </div>
             </div>
-          
-             
             <div class="py-14 ">
-                #for(heroImage in landingPages):
             <div class="h-screen  w-full h-[250px] bg-cover bg-center bg-no-repeat mb-8 md:h-[50vh]  rounded bg-[url(#(firstBlog.featuredPhoto))] overflow-hidden shadow-lg">
-                #endfor
               <div class="px-6 py-4 my-72">
                 <div class="font-bold text-xl mb-2 text-white">#(firstBlog.authorDetails) #(firstBlog.publishedDate)</div>
                 <p class="text-gray-700 text-2xl text-white">
                 #(firstBlog.title)
                 </p>
                 
-                <p class="text-gray-700 py-4 text-sm text-white">
+                <p class="text-gray-700 py-1 text-sm text-white">
                   #(firstBlog.summary)
                 </p>
                 <div>
@@ -89,65 +84,46 @@
                 
               </div>
             </div>
-            <div class="flex max-w-xl flex-row items-start justify-between" >
-                  <article class="flex max-w-xl flex-col items-start justify-between" >
-                    <div class="flex items-center ">
-                      <time datetime="2020-03-16" class="text-gray-500">Mar 16, 2020</time>
-                      <a href="#" class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">Marketing</a>
-                    </div>
-                    <div class="group relative">
-                      <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+            
+            <div class="flex -mx-2">
+            #for(blog in blogs):
+              <div class="md:w-4/12 px-2">
+                <!-- More posts... -->
+                <article class="h-full p-6 bg-white border border-gray-200 rounded-lg shadow">
+                  <div class="flex items-center ">
+                    <time datetime="2020-03-16" class="text-gray-500">#(blog.publishedDate)</time>
+                    <a href="#path()/blog" class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">Marketing</a>
+                  </div>
+                  <div class="group relative">
+                    <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+                      <a href="/blog">
+                        <span class="absolute inset-0"></span>
+                       #(blog.title)
+                      </a>
+                    </h3>
+                    <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">#(blog.summary)</p>
+                  </div>
+                  <div class="relative mt-8 flex items-center gap-x-4">
+                    <img src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="h-10 w-10 rounded-full bg-gray-50">
+                    <div class="text-sm leading-6">
+                      <p class="font-semibold text-gray-900">
                         <a href="#">
                           <span class="absolute inset-0"></span>
-                          Boost your conversion rate
+                          #(blog.authorDetails)
                         </a>
-                      </h3>
-                      <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.</p>
+                      </p>
+                      <!-- <p class="text-gray-600">Co-Founder / CTO</p> -->
                     </div>
-                    <div class="relative mt-8 flex items-center gap-x-4">
-                      <img src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="h-10 w-10 rounded-full bg-gray-50">
-                      <div class="text-sm leading-6">
-                        <p class="font-semibold text-gray-900">
-                          <a href="#">
-                            <span class="absolute inset-0"></span>
-                            Michael Foster
-                          </a>
-                        </p>
-                        <p class="text-gray-600">Co-Founder / CTO</p>
-                      </div>
-                    </div>
-                  </article>
-                  <!-- More posts... -->
-                <article class="flex max-w-xl flex-col items-start justify-between" >
-                    <div class="flex items-center ">
-                      <time datetime="2020-03-16" class="text-gray-500">Mar 16, 2020</time>
-                      <a href="#" class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">Marketing</a>
-                    </div>
-                    <div class="group relative">
-                      <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-                        <a href="#">
-                          <span class="absolute inset-0"></span>
-                          Boost your conversion rate
-                        </a>
-                      </h3>
-                      <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.</p>
-                    </div>
-                    <div class="relative mt-8 flex items-center gap-x-4">
-                      <img src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="h-10 w-10 rounded-full bg-gray-50">
-                      <div class="text-sm leading-6">
-                        <p class="font-semibold text-gray-900">
-                          <a href="#">
-                            <span class="absolute inset-0"></span>
-                            Michael Foster
-                          </a>
-                        </p>
-                        <p class="text-gray-600">Co-Founder / CTO</p>
-                      </div>
-                    </div>
-                  </article>
-                  
-            </div>
+                  </div>
 
+                  <a href="/blog/#(blog.slug)" class="my-6 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    Read more
+                    <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                  </a>
+                </article>
+              </div>
+             #endfor
+            </div>
         </div>
       </main>
     </div>
