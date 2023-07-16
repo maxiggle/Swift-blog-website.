@@ -11,6 +11,8 @@ let package = Package(
         .package(url: "https://github.com/vapor/vapor.git", from: "4.76.0"),
         .package(url: "https://github.com/vapor/leaf.git", from: "4.0.0"),
         .package(url: "https://github.com/Prn-Ice/buttercms-swift.git", from: "1.1.3"),
+        .package(url: "https://github.com/scinfu/SwiftSoup.git", from: "2.6.0"),
+        .package(url: "https://github.com/vapor-community/wkhtmltopdf.git", from: "4.0.0"),
     ],
     targets: [
         .executableTarget(
@@ -19,6 +21,8 @@ let package = Package(
                 .product(name: "Vapor", package: "vapor"),
                 .product(name: "Leaf", package: "leaf"),
                 .product(name: "ButterCMSSDK", package: "buttercms-swift"),
+                .product(name: "SwiftSoup", package: "swiftsoup"),
+                .product(name: "wkhtmltopdf", package: "wkhtmltopdf")
             ],
             swiftSettings: [
                 // Enable better optimizations when building in Release configuration. Despite the use of

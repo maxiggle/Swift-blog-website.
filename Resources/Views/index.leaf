@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link fhref="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
-  <title>acronyms</title>
+  <title>#ValueField("Hello")</title>
 </head>
 <body>
     <div class="min-h-full">
@@ -22,7 +22,7 @@
               <div class="hidden md:block">
                 <div class="ml-10 flex items-baseline space-x-4">
                   <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                  <a href="#" class="text-grey-800 rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Home</a>
+                  <a href="#path()/" class="text-grey-800 rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Home</a>
                   <a href="#" class="text-grey-800 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Products</a>
                   <a href="#" class="text-grey-800 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Resources</a>
                   <a  href="/blogs" class="text-grey-800 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Blog</a>
@@ -62,11 +62,12 @@
                 #for(page in landingPages):
                 <p class="text-center">#unsafeHTML(page.fields.heroSection.headline)</p>
                 
-                #endfor
+               
             </div>
             </div>
             <div class="py-14 ">
-            <div class="h-screen  w-full h-[250px] bg-cover bg-center bg-no-repeat mb-8 md:h-[50vh]  rounded bg-[url(#(firstBlog.featuredPhoto))] overflow-hidden shadow-lg">
+            <div class="h-screen  w-full h-[250px] bg-cover bg-center bg-no-repeat mb-8 md:h-[50vh]  rounded bg-[url(#(page.fields.heroSection.heroimage))] overflow-hidden shadow-lg">
+                #endfor
               <div class="px-6 py-4 my-72">
                 <div class="font-bold text-xl mb-2 text-white">#(firstBlog.authorDetails) #(firstBlog.publishedDate)</div>
                 <p class="text-gray-700 text-2xl text-white">

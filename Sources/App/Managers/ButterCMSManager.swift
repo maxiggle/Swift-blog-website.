@@ -15,8 +15,23 @@ class ButterCMSManager {
 //    let homePageSubject = PassthroughSubject<PageResponse<HomePageFields>, Error>()
     let blogPagesSubject = PassthroughSubject<PagesResponse<BlogPageFields>, Error>()
 
-    
-    
+   
+//    func searchPages(eventLoop: EventLoop) -> EventLoopFuture<[Page<BlogPageFields>]>{
+//        let promise = eventLoop.makePromise(of: [Page<BlogPageFields>].self)
+//        butter.searchPosts(parameters: [.query(value: "Butter")]) { result in
+//            switch result {
+//            case .success(let posts):
+//                print(" --- searchPosts --- ")
+//                print("Count: \(posts.meta.count)")
+//                posts.data.compactMap() { print("Post: \($0.title)") }
+//                print(" --------------- ")
+//            case .failure(let error):
+//                print("searchPosts failed with Error: \(error)")
+//            }
+//        }
+//        return promise.futureResult
+//    }
+     
     func getPages(eventLoop: EventLoop) -> EventLoopFuture<[Page<BlogPageFields>]> {
         let promise = eventLoop.makePromise(of: [Page<BlogPageFields>].self)
 
@@ -64,4 +79,6 @@ class ButterCMSManager {
             }
         }
     }
+    
+    
 }

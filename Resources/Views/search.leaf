@@ -32,7 +32,7 @@
               <div class="ml-10 flex items-baseline space-x-4">
                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                 <a href="#" class="text-grey-800 rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Home</a>
-                <a href="#" class="text-grey-800 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Products</a>
+                <a href="#" class="text-grey-800 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">#(matchedBlog)</a>
                 <a href="#" class="text-grey-800 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Resources</a>
                 <a  href="/blogs" class="text-grey-800 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Blog</a>
               </div>
@@ -64,13 +64,7 @@
         </div>
       </div>
     </nav>
-     <div class="flex justify-end py-4 px-40">
-    <form action="/search" class="flex">
-      <input class="border rounded-l-md py-2 px-4 outline-none" name="text" type="text" placeholder="Search...">
-      <button class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-r-md" type="submit">Search</button>
-    </form>
-  </div>
-     
+    
     <div class="mx-auto max-w-7xl relative">
       <div class=" mx-auto flex -mx-2">
         #for(blog in blogs):
@@ -79,10 +73,14 @@
           <article
             class="h-full p-6 bg-white border border-gray-200 rounded-lg shadow"
           >
+         
             <div class="flex items-center">
+               
+             
               <time datetime="2020-03-16" class="text-gray-500"
-                >#(blog.publishedDate)</time
+                >#(blog.publishedDat)</time
               >
+            
               <a
                 href="#path()/blog"
                 class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100"
@@ -108,9 +106,6 @@
                 alt=""
                 class="h-10 w-10 rounded-full bg-gray-50"
               />
-              
-              
-
               <div class="overlay hidden"></div>
              
 
@@ -124,7 +119,6 @@
                 </p>
               </div>
             </div>
-
             <a
               href="/blog/#(blog.slug)"
               class="my-6 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -147,9 +141,9 @@
           </article>
         </div>
         #endfor
+       
       </div>
     </div>
-
 
       <footer class="absolute bottom-0 right-0 left-0 w-full">
         <div class="bg-gradient-to-r from-yellow-500  via-pink-500 to-purple-500 pt-5 ">
@@ -257,7 +251,6 @@
           </div>
         </div>
       </footer>
-
     </div>
     </script>
   </body>

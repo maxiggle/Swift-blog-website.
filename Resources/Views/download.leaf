@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base href='#(publicDir)'>
+    <title>Exploring the Wonders of Nature</title>
+  </head>
+  <body>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex p-5 -mx-5">
+        <div class="w-8/12 px-2.5">
+          <p class="font-extrabold text-4xl mt-2 text-gray-900">
+            #(blog.title)
+          </p>
+          <p class="text-gray-900 flex items-center gap-2 w-fit mx-auto pt-16">
+            #(blog.authorDetails)
+          </p>
+          <p class="text-gray-900 flex items-center gap-2 w-fit mx-auto">
+            #(blog.publishedDate)
+          </p>
+          <div class="article-content">
+            <div class="card">
+              <img src="#(blog.featuredPhoto)" class="card-image" alt="" />
+            </div>
+            <div class="content">#unsafeHTML(blog.content)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

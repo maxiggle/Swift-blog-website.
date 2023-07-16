@@ -190,6 +190,15 @@
       }
     },
     {
+      "identity" : "swiftsoup",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/scinfu/SwiftSoup.git",
+      "state" : {
+        "revision" : "8b6cf29eead8841a1fa7822481cb3af4ddaadba6",
+        "version" : "2.6.1"
+      }
+    },
+    {
       "identity" : "vapor",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/vapor/vapor.git",
@@ -205,6 +214,15 @@
       "state" : {
         "revision" : "53fe0639a98903858d0196b699720decb42aee7b",
         "version" : "2.14.0"
+      }
+    },
+    {
+      "identity" : "wkhtmltopdf",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/vapor-community/wkhtmltopdf.git",
+      "state" : {
+        "revision" : "e29131da9b2652ebd8995a288059e95e1ab729f4",
+        "version" : "4.0.0"
       }
     }
   ],
