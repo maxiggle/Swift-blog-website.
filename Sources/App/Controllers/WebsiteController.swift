@@ -8,7 +8,7 @@ import wkhtmltopdf
 
 struct WebsiteController: RouteCollection {
     func boot(routes: RoutesBuilder) throws {
-        routes.get(use: handleArticleList)
+        routes.get(use: homepageHandler)
         routes.get("blog", ":blogSlug", use: blogHandler)
         routes.get("blogs", use: blogsHandler)
         routes.get("search", use: searchHandler)
@@ -16,7 +16,7 @@ struct WebsiteController: RouteCollection {
     }
     
     
-    func handleArticleList(_ req: Request) -> EventLoopFuture<View> {
+    func homepageHandler(_ req: Request) -> EventLoopFuture<View> {
         let pagesFuture = ButterCMSManager.shared.getPages(eventLoop: req.eventLoop)
         let landingPageFuture = ButterCMSManager.shared.getLandingPage(eventLoop: req.eventLoop)
         
@@ -54,9 +54,9 @@ struct WebsiteController: RouteCollection {
             })
             let selectedBlog = findBlogFromSlug(slug: slug, blogs: blogs)
             let blogAnchors = getBlogAnchors(selectedBlog: selectedBlog)
-            let hey = extractPTag(selectedBlog: selectedBlog)
             
-            let context = BlogContext(title: slug, blog: selectedBlog, blogAnchors: blogAnchors, hey: hey)
+            
+            let context = BlogContext(title: slug, blog: selectedBlog, blogAnchors: blogAnchors)
             
             return req.view.render("blog", context)
         }
@@ -145,6 +145,7 @@ struct WebsiteController: RouteCollection {
         return filteredBlogs ?? []
     }
     
+    
     func downloadPageHandler(_ req: Request) -> EventLoopFuture<Response> {
         let document = Document(margins: 15)
         let slug = req.parameters.get("blogSlug")
@@ -158,9 +159,8 @@ struct WebsiteController: RouteCollection {
             })
             let selectedBlog = findBlogFromSlug(slug: slug, blogs: blogs)
             let blogAnchors = getBlogAnchors(selectedBlog: selectedBlog)
-            let hey = extractPTag(selectedBlog: selectedBlog)
             
-            let context = BlogContext(title: slug, blog: selectedBlog, blogAnchors: blogAnchors, hey: hey)
+            let context = BlogContext(title: slug, blog: selectedBlog, blogAnchors: blogAnchors)
             let renderPage = req.view.render("download", context)
             let pages = [renderPage]
                 .flatten(on: req.eventLoop)
@@ -185,22 +185,22 @@ struct WebsiteController: RouteCollection {
         }
     }
     
-    func extractPTag(selectedBlog: BlogPageFields?) -> [ExtractTagContext]? {
-        var tags: [ExtractTagContext] = []
-        do {
-            if let html = selectedBlog?.content {
-                let doc: SwiftSoup.Document = try SwiftSoup.parse(html)
-                let allTags: Elements = try doc.select("p")
-                tags.append(ExtractTagContext(pTag: try allTags.toString()))
-            }
-            
-        } catch {
-            print("Error parsing HTML: \(error)")
-        }
-        print(tags)
-        
-        return tags
-    }
+//    func extractPTag(selectedBlog: BlogPageFields?) -> [ExtractTagContext]? {
+//        var tags: [ExtractTagContext] = []
+//        do {
+//            if let html = selectedBlog?.content {
+//                let doc: SwiftSoup.Document = try SwiftSoup.parse(html)
+//                let allTags: Elements = try doc.select("p")
+//                tags.append(ExtractTagContext(pTag: try allTags.toString()))
+//            }
+//
+//        } catch {
+//            print("Error parsing HTML: \(error)")
+//        }
+//        print(tags)
+//
+//        return tags
+//    }
 }
 
 struct IndexContext: Encodable {
@@ -216,7 +216,6 @@ struct BlogContext: Encodable {
   let title: String?
   let blog: BlogPageFields?
   let blogAnchors: [BlogAnchor]?
-    let hey: [ExtractTagContext]?
    
 }
 
